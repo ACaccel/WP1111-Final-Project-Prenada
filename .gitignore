@@ -10,11 +10,11 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-package-lock.json
-yarn.*
+#package-lock.json
+#yarn.*
 
 # macOS
 .DS_Store
-.env
+#.env
 
 *.sh

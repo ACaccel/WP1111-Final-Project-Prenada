@@ -1,0 +1,15 @@
+{
+  "name": "prenada",
+  "version": "1.0.0",
+  "description": "n/a",
+  "main": "index.js",
+  "repository": "https://github.com/dlion168/prenada",
+  "author": "Evan Lin",
+  "license": "MIT",
+  "private": null,
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  },
+  "dependencies": {}
+}

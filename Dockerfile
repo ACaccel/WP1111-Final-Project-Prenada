@@ -7,6 +7,7 @@ WORKDIR /app
 
 RUN corepack enable
 RUN yarn install:prod
+RUN npm install -g expo-cli
 RUN yarn build
 
 CMD ["yarn", "deploy"]

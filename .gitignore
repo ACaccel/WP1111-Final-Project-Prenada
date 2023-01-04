@@ -1,5 +1,6 @@
 node_modules/
 .vscode/
+.expo/
 .expo-shared/
 dist/
 npm-debug.*
@@ -10,11 +11,10 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-#package-lock.json
-#yarn.*
+package-lock.json
 
 # macOS
 .DS_Store
-#.env
+.env
 
 *.sh

@@ -11,6 +11,7 @@ const CheckListContext = createContext({
     onDeleteHandler: ()=>{},
 });
 const ChecklistProvider = (props) => {
+    const { children, storeData } = props; // parse storeData and add storeData to value
     const [checkListData, setCheckListData] = useState({intro:"", title:"", data:[]})
     const [curWeek, setCurWeek] = useState(2)
     const [displayWeek, setDisplayWeek] = useState(curWeek)
@@ -21,6 +22,7 @@ const ChecklistProvider = (props) => {
             params: {week: week}
         });
         console.log(message, checklists);
+        checklists.data.sort((x,y)=>Number(y.liked)-Number(x.liked))
         setfunc(checklists);
     }
     const deleteChecklistItem = async (_id) => {
@@ -41,6 +43,9 @@ const ChecklistProvider = (props) => {
         console.log(message, returnItem);
         let a = JSON.parse(JSON.stringify(checkListData))
         a.data.push(returnItem)
+        console.log("Before : ",a.data)
+        a.data.sort((x,y)=>Number(y.liked)-Number(x.liked))
+        console.log("After : ",a.data)
         setCheckListData(a)
         return await returnItem
     }
@@ -57,6 +62,7 @@ const ChecklistProvider = (props) => {
 
         let a = JSON.parse(JSON.stringify(checkListData))
         a.data[arrayId] = returnItem 
+        a.data.sort((x,y)=>Number(y.liked)-Number(x.liked))
         console.log(message, a);
         setCheckListData(a);
     }
@@ -74,13 +80,20 @@ const ChecklistProvider = (props) => {
         console.log("deleted array ID = ", arrayId)
         let a = JSON.parse(JSON.stringify(checkListData))
         a.data.splice(arrayId, 1);
-        console.log()
         setCheckListData(a);
     };
 
     return <CheckListContext.Provider
-        value={{ displayWeek, curWeek, setDisplayWeek, checkListData, setCheckListData,
-             postChecklistItem, putChecklistItem, onDeleteHandler }}
+        value={{ 
+            displayWeek, 
+            curWeek, 
+            setDisplayWeek, 
+            checkListData, 
+            setCheckListData,
+            postChecklistItem, 
+            putChecklistItem, 
+            onDeleteHandler, 
+            storeData }}
         {...props}
     />
 

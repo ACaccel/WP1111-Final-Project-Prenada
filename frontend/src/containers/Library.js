@@ -17,7 +17,7 @@ const Library = ({ route }) => {
     const articleClick = (article) => {
         setArticle(article);
     }
-    
+
     useEffect(() => {
         if (route?.params?.topicData)
             setTopic(route.params.topicData);
